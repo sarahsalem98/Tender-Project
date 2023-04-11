@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TenderProject.Data;
 using TenderProject.Models;
+using TenderProject.Repository;
+using TenderProject.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnectio
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 

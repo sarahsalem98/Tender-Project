@@ -3661,6 +3661,21 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "Tender.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.4",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4"
+        },
+        "compile": {
+          "bin/placeholder/Tender.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Tender.DataAccess.dll": {}
+        }
       }
     }
   },
@@ -10599,6 +10614,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "Tender.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../Tender.DataAccess/Tender.DataAccess.csproj",
+      "msbuildProject": "../Tender.DataAccess/Tender.DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10606,7 +10626,8 @@
       "Microsoft.EntityFrameworkCore >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.4",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.5"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.5",
+      "Tender.DataAccess >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -10635,7 +10656,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\projects\\TenderProject\\Tender.DataAccess\\Tender.DataAccess.csproj": {
+              "projectPath": "E:\\projects\\TenderProject\\Tender.DataAccess\\Tender.DataAccess.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

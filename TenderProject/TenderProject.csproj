@@ -22,4 +22,8 @@
     <Folder Include="wwwroot\Dashboard\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tender.DataAccess\Tender.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

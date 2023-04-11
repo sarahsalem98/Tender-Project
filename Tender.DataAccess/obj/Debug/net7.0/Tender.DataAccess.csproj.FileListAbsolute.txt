@@ -1,0 +1,12 @@
+E:\projects\TenderProject\Tender.DataAccess\bin\Debug\net7.0\Tender.DataAccess.deps.json
+E:\projects\TenderProject\Tender.DataAccess\bin\Debug\net7.0\Tender.DataAccess.dll
+E:\projects\TenderProject\Tender.DataAccess\bin\Debug\net7.0\Tender.DataAccess.pdb
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\Tender.DataAccess.csproj.AssemblyReference.cache
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\Tender.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\Tender.DataAccess.AssemblyInfoInputs.cache
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\Tender.DataAccess.AssemblyInfo.cs
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\Tender.DataAccess.csproj.CoreCompileInputs.cache
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\Tender.DataAccess.dll
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\refint\Tender.DataAccess.dll
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\Tender.DataAccess.pdb
+E:\projects\TenderProject\Tender.DataAccess\obj\Debug\net7.0\ref\Tender.DataAccess.dll

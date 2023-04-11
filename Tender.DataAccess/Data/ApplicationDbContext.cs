@@ -16,7 +16,7 @@ namespace TenderProject.Data
 
         }
 
-      public  DbSet<Employee> Employees { get; set; }
+         public  DbSet<Employee> Employees { get; set; }
         // DbSet <Role> Roles { get; set; }
         public DbSet<SupplierActivity> SupplierActivities { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }   
