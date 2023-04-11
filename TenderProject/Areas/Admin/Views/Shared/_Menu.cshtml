@@ -1,0 +1,61 @@
+﻿
+
+
+@{
+    var currentRoute = Context.Request.HttpContext.Request.Path.Value;
+}
+<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+            <li class="nav-item me-auto">
+                <a class="navbar-brand" href="~/Dashboard/html/rtl/vertical-menu-template/index.html">
+
+                    <h2 class="brand-text">Tender System</h2>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="shadow-bottom"></div>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class="@(currentRoute=="/"?"active":"")  nav-item">
+                <a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
+                    </li>
+                    <li>
+                        <a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class=" @(currentRoute.Contains("supplier")?"active":"") nav-item">
+                <a class="d-flex align-items-center" href="#"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Invoice">Suppliers</span></a>
+                <ul class="menu-content">
+                   
+                    <li>
+                        <a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Preview</span></a>
+                    </li>
+                    <li>
+                        <a class="d-flex align-items-center" href="app-invoice-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Add</span></a>
+                    </li>
+                
+                </ul>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+        </ul>
+    </div>
+</div>
