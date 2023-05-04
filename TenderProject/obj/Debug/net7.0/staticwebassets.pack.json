@@ -7197,6 +7197,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\custome-js\\admin\\employee.js",
+      "PackagePath": "staticwebassets\\custome-js\\admin\\employee.js"
+    },
+    {
       "Id": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\custome-js\\admin\\supplier.js",
       "PackagePath": "staticwebassets\\custome-js\\admin\\supplier.js"
     },

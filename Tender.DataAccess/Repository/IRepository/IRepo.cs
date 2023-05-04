@@ -8,7 +8,7 @@ namespace TenderProject.Repository.IRepository
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);  
 
-        IEnumerable<T> GetAll(Expression<Func<T,bool>>?filter=null,string? includePrperties=null);
-        T GetFirstOrDefault(Expression<Func<T,bool>>filter, string? includePrperties = null);
+        List<T> GetAll(Expression<Func<T,bool>>?filter=null,string? includeProperties=null);
+        T GetFirstOrDefault(Expression<Func<T,bool>>filter, string? includeProperties = null);
     }
 }

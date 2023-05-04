@@ -14,7 +14,8 @@ namespace TenderProject.Repository
 
         public void update(Supplier supplier)
         {
-            _db.Suppliers.Update(supplier);    
+            supplier.UpdatedAt= DateTime.Now;
+            _db.Suppliers.Update(supplier);
         }
     }
 }

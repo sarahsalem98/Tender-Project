@@ -21,33 +21,34 @@ namespace TenderProject.Repository
            dbSet.Add(entity);   
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includePrperties = null)
+        public List<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             if (filter != null)
             {
-            query.Where(filter);    
+           query= query.Where(filter);    
             }
-            if (includePrperties != null)
+            if (includeProperties != null)
             {
-                foreach (var includeProperty in includePrperties.Split(new char[] {','},StringSplitOptions.RemoveEmptyEntries) ){
-                    query.Include(includeProperty);
+                foreach (var includeProperty in includeProperties.Split(new char[] {','},StringSplitOptions.RemoveEmptyEntries) ){
+                  query= query.Include(includeProperty);
                 }
             }
             return query.ToList();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>>? filter = null, string? includePrperties = null)
+        public T GetFirstOrDefault(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
          
-            if (includePrperties != null)
+             query=query.Where(filter);
+          
+            if (includeProperties != null)
             {
-                foreach (var includeProperty in includePrperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) {
-                    query.Include(includeProperty);
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) {
+                    query=query.Include(includeProperty);
                 }
             }
-            query.Where(filter);
             return query.FirstOrDefault();
         }
 

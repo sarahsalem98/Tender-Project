@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using TenderProject.Data;
+using TenderProject.Helpers;
 using TenderProject.Models;
 using TenderProject.Repository;
 using TenderProject.Repository.IRepository;
@@ -11,8 +13,43 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnectio
 
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented=true;
+    })
+    .AddRazorRuntimeCompilation() 
+    ;
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<Auth>();
+
+
+
+
+builder.Services.AddAuthentication(a =>
+{ a.DefaultScheme = "Supplier_Schema"; }
+).AddCookie("Supplier_Schema", options =>
+{
+    options.Cookie.Name = "Supplier";
+}
+
+).AddCookie("Admin_Schema", options =>
+{
+    options.Cookie.Name = "Admin";
+}
+);
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", AuthBuilder =>
+    {
+        AuthBuilder.AddAuthenticationSchemes("Admin_Schema");
+        AuthBuilder.RequireRole("Admin");
+
+    });
+});
 
 var app = builder.Build();
 
@@ -34,10 +71,12 @@ app.UseAuthorization();
 app.MapAreaControllerRoute(
     name:"Admin",
     areaName:"Admin",
-    pattern:"Admin/{controller=Account}/{action=Login}"
+    pattern:"admin/{controller=Account}/{action=Login}/{id?}/{returnUrl?}"
     );
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 app.Run();

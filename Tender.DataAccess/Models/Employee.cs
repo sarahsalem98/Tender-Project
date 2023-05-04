@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TenderProject.Models
 {
@@ -12,7 +13,11 @@ namespace TenderProject.Models
       public string Password { get; set; }  
       public string? PhoneNumber { get; set; }
 
-     // public IList<EmployeeRole> Roles { get; set; }
+        public Role Role { get; set; }
+        [ForeignKey("RoleId")]
+        [Column(Order =2)]
+        public int? RoleId { get; set; }
+        // public List<EmployeeRole> EmployeeRole{ get; set; }
 
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "o4wGIy7agHVo11U4eX9W0zAw2LE1Y0KmHjnbjiwmEAo=",
+  "Hash": "RpH536BXezGRGEP8b/lf+9PSJe9SDDw/o2z2xFZ3d/E=",
   "Source": "TenderProject",
   "BasePath": "_content/TenderProject",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\custome-js\\admin\\employee.js",
+      "SourceId": "TenderProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\",
+      "BasePath": "_content/TenderProject",
+      "RelativePath": "custome-js/admin/employee.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\custome-js\\admin\\employee.js"
     },
     {
       "Identity": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\custome-js\\admin\\supplier.js",

@@ -1,0 +1,84 @@
+﻿@model EmployeeVM
+@{
+    var isAdd = (ViewData["isAdd"] != null) ? ((bool)ViewData["isAdd"]) : false;
+}
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0"> @(isAdd ? "Add New" : "edit")  Employee</h2>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content-body">
+            <section id="multiple-column-form">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">@(isAdd ? "new Employee" : "edit") </h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="form" >
+                                      <input type="text"  asp-for="Id" id="employee-id" />
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label" > Name</label>
+                                                <input type="text" id="employee-name" asp-for="Name" class="form-control" placeholder="please enter  name" />
+                                                <span asp-validation-for="Name" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" id="employee-email" asp-for="Email" class="form-control" placeholder="please enter email" />
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label" >Password</label>
+                                                <input type="text" id="employee-password" class="form-control" asp-for="Password" placeholder="please enter  password" />
+                                                <span asp-validation-for="Password" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label" >Phone Number</label>
+                                                <input type="text" id="employee-phoneNumber" class="form-control" asp-for="PhoneNumber" placeholder="please enter phone number" />
+                                                <span asp-validation-for="PhoneNumber" class="text-danger" ></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label">Role</label>
+                                                <select class="form-select" id="employee-roleId" asp-for="RoleId"
+                                                        asp-items="@(new SelectList( ViewBag.roles,"Id","Name_En"))">
+                                                    <option value=""> ---------select Role ---------</option>
+                                                </select>
+                                                <span asp-validation-for="RoleId" class="text-danger"></span>
+                                            </div>
+
+                                        <div class="col-12">
+                                            <button type="button" class="btn btn-primary me-1" onclick="employee.submitForm();" >Submit</button>
+                                            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

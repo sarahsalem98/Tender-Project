@@ -32,6 +32,15 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "RandomGenerator": {
+      "commandName": "Project",
+      "hotReloadProfile": "aspnetcore",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
+
 }

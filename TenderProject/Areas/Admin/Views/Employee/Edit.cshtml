@@ -1,0 +1,14 @@
+﻿@model EmployeeVM
+@{
+    ViewData["Title"] = "Edit";
+    //Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_AddEditEmployee" model="@Model" />
+
+<partial name="_AddEditEmployee" model="@Model">
+    @section Scripts{
+    <script src="~/custome-js/admin/employee.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    
+    }

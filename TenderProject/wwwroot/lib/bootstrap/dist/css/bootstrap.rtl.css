@@ -296,8 +296,9 @@ svg {
 }
 
 table {
-  caption-side: bottom;
-  border-collapse: collapse;
+    caption-side: bottom;
+    border-collapse: collapse;
+   
 }
 
 caption {

@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0">Employees Table</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                
+                                <li class="breadcrumb-item active">
+                                    Employees
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+       
+        
+        <div class="content-body">
+            
+            <!-- users list start -->
+            <section class="app-user-list">
+
+                <!-- list and filter start -->
+                <div class="card">
+
+                    <div class="card-body border-bottom">
+                        <h4 class="card-title">Search & Filter</h4>
+                        <div class="row">
+                            <div class="col-md-3 ">
+
+                                <label class="form-label">ID</label>
+                                <input type="text" class="form-control" id="employee-search-id" />
+
+
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" id="employee-search-name" />
+                            </div>
+                            <div class="col-md-3 ">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control" id="employee-search-email" />
+                            </div>
+                            <div class="col-md-3 ">
+                                <label class="form-label">PhoneNumber</label>
+                                <input type="text" class="form-control" id="employee-search-phoneNumber" />
+                            </div>
+
+                        </div>
+
+
+                        @*<div class="row pt-2 ">
+
+                        <div style ="text-align:left;">
+
+                        <button type="button" onclick="supplier.intiTbl(true);" class="btn btn-primary  "> search</button>
+                        </div >
+
+
+                        </div>*@
+
+                    </div>
+
+                    <div class="card-datatable table-responsive pt-0">
+                        <div class="card-header ">
+                            <h4 class="card-title">All Employees  </h4>
+                        </div>
+                        <table class="table" id="employeeTbl">
+
+                            <thead class="table-light">
+                                <tr>
+
+
+                                    <th>id</th>
+                                    <th>name</th>
+                                    <th>email</th>
+                                    <th>phone number</th>
+                                    <th>role</th>
+
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+
+                </div>
+                <!-- list and filter end -->
+            </section>
+            <!-- users list ends -->
+       
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts{
+
+<script src="~/custome-js/admin/employee.js"></script>
+<script>
+
+
+    $(document).ready(function () {
+        console.log("looooog");
+        employee.intiTbl();
+    });
+</script>
+}

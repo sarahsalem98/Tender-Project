@@ -32,8 +32,8 @@
             </li>
 
             <li class=" @(currentRoute.Contains("supplier")?"active":"") nav-item">
-                <a class="d-flex align-items-center" href="#"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Invoice">Suppliers</span></a>
-                <ul class="menu-content">
+                <a class="d-flex align-items-center"asp-action="index" asp-controller="supplier" asp-area="admin"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Invoice">Suppliers</span></a>
+                @*<ul class="menu-content">
                    
                     <li>
                         <a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Preview</span></a>
@@ -42,7 +42,12 @@
                         <a class="d-flex align-items-center" href="app-invoice-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Add</span></a>
                     </li>
                 
-                </ul>
+                </ul>*@
+            </li>
+            <li class="@(currentRoute.Contains("employee")?"active":"") nav-item">
+                <a class="d-flex align-items-center" asp-action="index" asp-controller="employee" asp-area="admin"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Invoice">Employee</span></a>
+
+
             </li>
 
 
