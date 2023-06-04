@@ -1,8 +1,10 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TenderProject.Models
 {
+     [Index(nameof(Email),IsUnique = true)]
     public class Employee:TimeStamp
     {
       public int Id { get; set; }

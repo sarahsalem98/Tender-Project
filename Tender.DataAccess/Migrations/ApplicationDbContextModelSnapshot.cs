@@ -91,6 +91,32 @@ namespace Tender.DataAccess.Migrations
                     b.ToTable("Governments");
                 });
 
+            modelBuilder.Entity("Tender.DataAccess.Models.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Controller")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Permissions");
+                });
+
             modelBuilder.Entity("Tender.DataAccess.Models.SupplierBranch", b =>
                 {
                     b.Property<int>("Id")
@@ -140,7 +166,7 @@ namespace Tender.DataAccess.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("SupplierBranch");
+                    b.ToTable("SupplierBranches");
                 });
 
             modelBuilder.Entity("Tender.DataAccess.Models.SupplierDelegate", b =>
@@ -185,7 +211,7 @@ namespace Tender.DataAccess.Migrations
                     b.HasIndex("SupplierId")
                         .IsUnique();
 
-                    b.ToTable("SupplierDelegate");
+                    b.ToTable("SupplierDelegates");
                 });
 
             modelBuilder.Entity("TenderProject.Models.Activity", b =>
@@ -236,7 +262,7 @@ namespace Tender.DataAccess.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -262,6 +288,9 @@ namespace Tender.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasIndex("RoleId");
 
@@ -379,6 +408,17 @@ namespace Tender.DataAccess.Migrations
                     b.Navigation("Government");
                 });
 
+            modelBuilder.Entity("Tender.DataAccess.Models.Permission", b =>
+                {
+                    b.HasOne("TenderProject.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("Tender.DataAccess.Models.SupplierBranch", b =>
                 {
                     b.HasOne("Tender.DataAccess.Models.City", "City")
@@ -420,7 +460,7 @@ namespace Tender.DataAccess.Migrations
             modelBuilder.Entity("TenderProject.Models.Employee", b =>
                 {
                     b.HasOne("TenderProject.Models.Role", "Role")
-                        .WithMany()
+                        .WithMany("Employees")
                         .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
@@ -435,6 +475,11 @@ namespace Tender.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Activity");
+                });
+
+            modelBuilder.Entity("TenderProject.Models.Role", b =>
+                {
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("TenderProject.Models.Supplier", b =>

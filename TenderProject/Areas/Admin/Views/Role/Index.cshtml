@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<Role> roles = ViewBag.Roles;
+    var UserRolesCount = ViewBag.UserRolesCount;
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+           
+
+
+                <div class="row">
+                    <h3 class="col-md-9">Roles List</h3>
+                    <div class="col-md-3"> <a class="btn btn-primary  me-0 me-sm-1 mb-1 mb-sm-2 w-100" asp-action="create" asp-controller="role" asp-area="admin"> Add New Role +</a> </div>
+                </div>
+                <!-- Role cards -->
+                <div class="row">
+                    @foreach (var role in roles)
+                    {
+
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Total @role.Employees?.Count() users</span>
+
+                                    @if (role.Employees?.Count() > 0)
+                                    {
+                                        <a href="javascript:void(0);" class="text-body"><i data-feather="x" class="font-medium-5" data-bs-toggle="modal" data-bs-target="#warning"></i></a>
+
+                                    }
+                                   else {
+                                        <a onclick="rolee.openDeleteModal(@role.Id);" class="text-body"><i data-feather="x" class="font-medium-5" ></i></a>
+                                            
+                                        }
+
+
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-end mt-1 pt-25">
+                                        <div class="role-heading">
+                                            <h4 class="fw-bolder" id="role-name-title">@role.Name_En</h4>
+                                            <a asp-action="edit" asp-area="admin" asp-controller="role" asp-route-id="@role.Id" class="role-edit-modal" >
+                                                <small class="fw-bolder">Edit Role</small>
+                                            </a>
+                                        </div>
+                                    <a onclick="rolee.copyRole(this);" data-message="@role.Name_En" class="text-body"><i data-feather="copy" class="font-medium-5"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <!--/ Role cards -->
+                <!-- Edit Role Modal -->
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+@*    //modals*@
+
+
+
+<div class="modal fade modal-danger text-start" id="danger" tabindex="-1" aria-labelledby="myModalLabel120" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="danger-modal-title">delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="danger-modal-body">
+                Tart lemon drops macaroon oat cake chocolate toffee chocolate bar icing. Pudding jelly beans
+                carrot cake pastry gummies cheesecake lollipop. I love cookie lollipop cake I love sweet gummi
+                bears cupcake dessert.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
+                <button type="button" class="btn btn-danger" id="danger-accept-btn">Accept</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade text-start modal-warning" id="warning" tabindex="-1" aria-labelledby="myModalLabel140" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel140">Warning</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               This role can not be deleted , beacause it has users assigned to it you only can edit it 
+            </div>
+            <div class="modal-footer">
+              
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Accept</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  @section Scripts{
+
+    <script src="~/custome-js/admin/role.js" ></script>
+   }

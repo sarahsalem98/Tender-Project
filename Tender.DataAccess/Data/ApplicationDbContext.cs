@@ -18,14 +18,18 @@ namespace TenderProject.Data
         }
 
          public  DbSet<Employee> Employees { get; set; }
-        public DbSet <Role> Roles { get; set; }
+          public DbSet <Role> Roles { get; set; }
          public DbSet<Activity> Activities { get; set; }
          public DbSet<Supplier> Suppliers { get; set; } 
         
         public DbSet<Government> Governments { get; set; }
         public DbSet<City> Cities { get; set; }
-      //  public DbSet<SupplierDelegate> SupplierDelegate { get; set; }
-       // public DbSet<SupplierBranch> SupplierBranch{ get; set; }
+
+       // public DbSet<TechnicalSide> TechnicalSides { get;set; }
+        public DbSet<SupplierDelegate> SupplierDelegates { get; set; }
+        public DbSet<SupplierBranch> SupplierBranches{ get; set; }
+
+        public DbSet<Permission> Permissions { get; set; }  
 
     }
 }

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["isAdd"] = true;
+}
+
+<partial name="_AddEditRole"/>
+
+@section Scripts{
+
+    <script src="~/custome-js/admin/role.js" ></script>
+    <script>
+        $(document).ready(function(){
+            var adminCheck = document.querySelector("#admin-check");
+            var inputs=  document.querySelectorAll("#permission-Check");
+         
+           
+            adminCheck.addEventListener("change",function(){
+              var adminChecked = this.checked;
+              inputs.forEach(function(input){
+
+                    input.checked = adminChecked;
+              });
+            
+
+            });
+            inputs.forEach(function (input) {
+                input.addEventListener("change",function(){
+                    if(adminCheck.checked){
+                        adminCheck.checked=false;
+                    }
+                })
+              
+            });
+
+        });
+
+    </script>
+}
+
+
+ 

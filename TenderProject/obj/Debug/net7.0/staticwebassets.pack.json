@@ -7201,6 +7201,10 @@
       "PackagePath": "staticwebassets\\custome-js\\admin\\employee.js"
     },
     {
+      "Id": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\custome-js\\admin\\role.js",
+      "PackagePath": "staticwebassets\\custome-js\\admin\\role.js"
+    },
+    {
       "Id": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\custome-js\\admin\\supplier.js",
       "PackagePath": "staticwebassets\\custome-js\\admin\\supplier.js"
     },

@@ -1,5 +1,23 @@
 ﻿var employee = {
     intiTbl: function (isSearch = false, pageNum = 1, pageSize = 10, reload = false) {
+
+        var employeeId = $("#employee-search-id").val().trim();
+        var employeeName = $("#employee-search-name").val().trim();
+        var employeeEmail = $("#employee-search-email").val().trim();
+        var employeePhoneNumber = $("#employee-search-phoneNumber").val().trim();
+        var EmployeeRoleId = ($("#employee-search-roleId").val() != "") ? ($("#employee-search-roleId").val()) : (0);
+
+       
+       
+     
+        var data = {
+            IsSearch: isSearch,
+            Id: employeeId,
+            Name: employeeName,
+            Email: employeeEmail,
+            PhoneNumber: employeePhoneNumber,
+            RoleId: EmployeeRoleId
+        };
         var columns = [
             { data: "id" },
             { data: "name" },
@@ -31,27 +49,23 @@
 
                 "render": function (data, type, row) {
 
-                    var str = '<div class="d-inline-flex">' +
-                        '<a class="pe-1 dropdown-toggle hide-arrow text-primary" data-bs-toggle="dropdown">' +
-                        feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
-                        '</a>' +
-                        '<div class="dropdown-menu dropdown-menu-end">';
+                  
 
 
 
-                    str += '<a href="javascript:void(0);" onclick="employee.edit(`' + row.id + '`)" class="dropdown-item delete-record">' +
-                        feather.icons['edit'].toSvg({ class: 'font-small-4 me-50' }) +
-                        'Edit</a>'
+                    var str = '<a href="javascript:void(0);" title="edit" onclick="employee.edit(`' + row.id + '`)" class="item-edit">' +
+                        feather.icons['edit'].toSvg({ class: 'font-medium-4 me-50' }) +
+                        '</a>'
 
 
 
 
 
 
-                    str += '</div>' +
+                
 
-                        '<a href="javascript:void(0);" onclick="supplier.details(`' + row.id + '`)" class="item-edit">' +
-                        feather.icons['eye'].toSvg({ class: 'font-small-4' }) +
+                    str +=   '<a href="javascript:void(0);" title="delete" onclick="employee.delete(`' + row.id + '`)" class="item-edit">' +
+                        feather.icons['x'].toSvg({ class: 'font-medium-4' }) +
                         '</a>' +
                         '</div>';
                     return str;
@@ -87,13 +101,34 @@
             ];
 
 
-        general.intiDataTable(tableId, url, data = {}, columns, buttons, pageSize);
+        general.intiDataTable(tableId, url, data, columns, buttons, pageSize);
 
     },
     edit: function (employeeId) {
        
         window.location.href = "/admin/employee/edit/" + employeeId;
                 
+    },
+    delete: function (employeeId) {
+        console.log("delete");
+        var data = {};
+        data.Id = employeeId
+        general.callAjax("/admin/employee/Delete", data,
+            function (response) {
+                if (response.status == 1) {
+                    toastr['info']('the class deleted successfully !! 😀', 'Success', {
+                        positionClass: 'toast-top-right',
+                        rtl: true,
+                        timeOut: 1000,
+                        onHidden: function () {
+                            window.location.href = '/admin/employee/index';
+                        }
+                    });
+
+                } else {
+                    alert("somthing went wrong");
+                }
+        }, true);
     }
     ,
     submitForm: function () { 
@@ -105,10 +140,28 @@
         data.RoleId = document.getElementById("employee-roleId").value.trim();
         data.Id = document.getElementById("employee-id").value.trim() == "" ? 0 : document.getElementById("employee-id").value.trim();
 
-       console.log(data)   ;
-        general.callAjax("/admin/employee/create", data, function (response) {
+   
+        general.callAjax("/admin/employee/AddEditEmployee", data, function (response) {
             if (response.status == 1) {
-                alert("class is added success");
+                var msg = "";
+                console.log(isAdd);
+                if (isAdd==true) {
+                     msg = 'the class added successfully !! 😀';
+                } else {
+                    msg = 'the class is edited successfully !! 😀';
+                }
+                toastr['success'](msg, 'Success', {
+                        positionClass: 'toast-top-right',
+                        rtl: true,
+                        timeOut: 3000,
+                        onHidden: function () {
+                            window.location.href = '/admin/employee/index';
+                        }
+                    });
+                
+               
+
+               
             }
         }, true);
     }

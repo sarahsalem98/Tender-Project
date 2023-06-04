@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Text.Json.Serialization;
+using TenderProject.Areas.Admin.Business;
 using TenderProject.Data;
 using TenderProject.Helpers;
 using TenderProject.Models;
@@ -12,18 +14,37 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnection")));
 
 
-// Add services to the container.
+
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-        options.JsonSerializerOptions.WriteIndented=true;
+   
+        options.JsonSerializerOptions.WriteIndented = true;
     })
-    .AddRazorRuntimeCompilation() 
-    ;
+    .AddRazorRuntimeCompilation();
+    
+
+
+
+builder.Services.AddSession(options => options.IdleTimeout = TimeSpan.FromHours(5));
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.ExpireTimeSpan = TimeSpan.FromHours(5);
+    options.SlidingExpiration = true;
+    
+
+}
+) ;
+
+
+
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<Auth>();
+builder.Services.AddScoped<RoleBusiness>();
+builder.Services.AddScoped<GeneralBusiness>();
+builder.Services.AddScoped<AccountBusiness>();
 
 
 
@@ -38,6 +59,9 @@ builder.Services.AddAuthentication(a =>
 ).AddCookie("Admin_Schema", options =>
 {
     options.Cookie.Name = "Admin";
+    options.LoginPath = "/admin/account/login";
+    options.ExpireTimeSpan = TimeSpan.FromHours(5);
+    options.SlidingExpiration = true;
 }
 );
 
@@ -46,10 +70,16 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminPolicy", AuthBuilder =>
     {
         AuthBuilder.AddAuthenticationSchemes("Admin_Schema");
-        AuthBuilder.RequireRole("Admin");
+        AuthBuilder.RequireRole("SuperAdmin");
 
     });
 });
+builder.Services.AddHttpContextAccessor();
+
+
+
+
+
 
 var app = builder.Build();
 
@@ -67,7 +97,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseSession();
 app.MapAreaControllerRoute(
     name:"Admin",
     areaName:"Admin",

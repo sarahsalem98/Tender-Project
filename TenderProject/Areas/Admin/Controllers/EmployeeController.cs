@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using TenderProject.Areas.Admin.Business;
 using TenderProject.Areas.Admin.Models;
 using TenderProject.Dtos;
 using TenderProject.Helpers;
@@ -9,24 +11,38 @@ using TenderProject.Repository.IRepository;
 
 namespace TenderProject.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("admin")]
+    [Authorize(AuthenticationSchemes = "Admin_Schema")]
     public class EmployeeController : Controller
     {
         private readonly IUnitOfWork _IUnitOfWork;
         private readonly Auth _auth;
+        private readonly UserVM userInfo=new UserVM();
+        private readonly IHttpContextAccessor _IhttpContextAccessor;
         public EmployeeController(
             IUnitOfWork unitOfWork
            , Auth auth
+            , IHttpContextAccessor httpContextAccessor  
             )
         {
             _IUnitOfWork = unitOfWork;
             _auth = auth;
+            _IhttpContextAccessor= httpContextAccessor;
+            userInfo = _IhttpContextAccessor.HttpContext.Session.GetObjectFromJson<UserVM>("user_inf_session");
         }
 
         // GET: EmployeeController
+   
         public ActionResult Index()
         {
+            if (GeneralStaticBusiness.CheckPermitedPages("Index", "Employee",_IhttpContextAccessor))
+            {
+            ViewBag.Roles = _IUnitOfWork.role.GetAll();
+          
             return View();
+
+            }
+            return RedirectToAction("noPermission", "home", new { area = "admin" });
         }
 
         // GET: EmployeeController/Details/5
@@ -45,7 +61,7 @@ namespace TenderProject.Areas.Admin.Controllers
         // POST: EmployeeController/Create
         [HttpPost]
         //   [ValidateAntiForgeryToken]
-        public ResultVM<string> Create(EmployeeVM employeeVM)
+        public ResultVM<string> AddEditEmployee(EmployeeVM employeeVM)
         {
            
             var result = new ResultVM<string>();
@@ -156,40 +172,113 @@ namespace TenderProject.Areas.Admin.Controllers
             }
         }
 
-        // GET: EmployeeController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+      
 
         // POST: EmployeeController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+       
+        public ResultVM<string> Delete(int id)
         {
-            try
+            var result = new ResultVM<string>(); 
+           Employee employee= _IUnitOfWork.employee.GetFirstOrDefault(e=>e.Id==id);
+            if (employee != null)
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+                _IUnitOfWork.employee.Remove(employee);
+                _IUnitOfWork.save();
+                result = new ResultVM<string>
+                {
+                    Data="1",
+                    ServerInfo = new ServerInfo()
+                    {
+                        CustomStatusCode = CustomStatusCodes.Success,
+                        Message = "success"
+
+                    },
+                    Status =Status.Success
+
+                };
+
+            }else
             {
-                return View();
+                result = new ResultVM<string>
+                {
+                    Data = "0",
+                    ServerInfo = new ServerInfo()
+                    {
+                        CustomStatusCode = CustomStatusCodes.NotFound,
+                        Message = "error"
+
+                    },
+                    Status = Status.NotFound
+
+                };
+
             }
+            return result;
         }
 
-        public ResultVM<List<Employee>> AllEmployees()
+
+        public ResultVM<List<Employee>> AllEmployees(EmployeeSearch search)
         {
+
             List<Employee> employees = _IUnitOfWork.employee.GetAll(includeProperties: "Role");
-            var result = new ResultVM<List<Employee>>
+
+
+            var result = new ResultVM<List<Employee>>();
+            if (search.IsSearch)
             {
-                Data = employees,
-                ServerInfo = new ServerInfo()
+                if (search.Id!=0)
                 {
-                    CustomStatusCode = CustomStatusCodes.Success,
-                    Message = "success"
-                },
-                Status = Status.Success
-            };
+                    employees = employees.FindAll(e => e.Id==search.Id);
+
+
+                }
+                if (!String.IsNullOrEmpty(search.Name))
+                {
+                    employees = employees.FindAll(e => e.Name.Contains(search.Name));
+
+
+                }
+                if (!String.IsNullOrEmpty(search.Email))
+                {
+                    employees = employees.FindAll(e => e.Email.Contains(search.Email));
+                }
+                if (!String.IsNullOrEmpty(search.PhoneNumber))
+                {
+                    employees = employees.FindAll(e => e.PhoneNumber.Contains(search.PhoneNumber));
+                }
+                if (search.RoleId != 0)
+                {
+                    employees = employees.FindAll(s => s.RoleId == search.RoleId).ToList();
+                }
+
+                result = new ResultVM<List<Employee>>()
+                {
+                    Data = employees,
+                    Status = Status.Success,
+                    ServerInfo = new ServerInfo()
+                    {
+                        CustomStatusCode = CustomStatusCodes.Success,
+                        Message = "successfully"
+                    }
+                };
+
+            }
+            else
+            {
+
+
+                result = new ResultVM<List<Employee>>
+                {
+                    Data = employees,
+                    ServerInfo = new ServerInfo()
+                    {
+                        CustomStatusCode = CustomStatusCodes.Success,
+                        Message = "success"
+                    },
+                    Status = Status.Success
+                };
+            }
             return result;
 
 

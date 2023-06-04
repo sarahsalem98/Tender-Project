@@ -37,7 +37,7 @@ namespace TenderProject.Models
         [DefaultValue(1)]
         public int Status { get; set; }
 
-        public virtual SupplierDelegate SupplierDelegate { get; set; }
+        public  SupplierDelegate SupplierDelegate { get; set; }
         public IList<SupplierBranch> SupplierBranch { get; set; }
 
 

@@ -18,6 +18,8 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/vendors-rtl.min.css">
+       <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/extensions/toastr.min.css">
+
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/forms/select/select2.min.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/extensions/swiper.min.css">
@@ -41,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/forms/form-validation.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/pages/app-ecommerce-details.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/extensions/ext-component-toastr.css">
+     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/extensions/ext-component-toastr.css">
     <!-- END: Page CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/custom-rtl.css">
@@ -106,6 +109,7 @@
     <script src="~/Dashboard/app-assets/vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>
     <!-- END: Page Vendor JS-->
     <!-- BEGIN: Theme JS-->
+     <script src="~/Dashboard/app-assets/vendors/js/extensions/toastr.min.js"></script>
     <script src="~/Dashboard/app-assets/js/core/app-menu.js"></script>
     <script src="~/Dashboard/app-assets/js/core/app.js"></script>
     <script src="~/Dashboard/app-assets/js/scripts/customizer.js"></script>
@@ -113,7 +117,9 @@
     <!-- BEGIN: Page JS-->
     <script src="~/Dashboard/app-assets/js/scripts/pages/app-user-list.js"></script>
     <script src="~/custome-js/general.js" ></script>
+      <script src="~/Dashboard/app-assets/js/scripts/extensions/ext-component-toastr.js"></script>
     <!-- END: Page JS-->
+
     @await RenderSectionAsync("Scripts", required: false)
 
 

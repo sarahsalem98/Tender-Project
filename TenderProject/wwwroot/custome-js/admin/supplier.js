@@ -52,7 +52,7 @@ var supplier = {
 
                     var str = '<div class="d-inline-flex">' +
                         '<a class="pe-1 dropdown-toggle hide-arrow text-primary" data-bs-toggle="dropdown">' +
-                        feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
+                        feather.icons['more-vertical'].toSvg({ class: 'font-medium-4' }) +
                         '</a>' +
                         '<div class="dropdown-menu dropdown-menu-end">';
 
@@ -78,7 +78,7 @@ var supplier = {
                     str += '</div>' +
 
                         '<a href="javascript:void(0);" onclick="supplier.details(`'+row.id+'`)" class="item-edit">' +
-                        feather.icons['info'].toSvg({ class: 'font-small-4' }) +
+                        feather.icons['info'].toSvg({ class: 'font-medium-4' }) +
                         '</a>' +
                         '</div>';
                     return str;

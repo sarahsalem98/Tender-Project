@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using TenderProject.Types;
 namespace TenderProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(AuthenticationSchemes = "Admin_Schema")]
     public class SupplierController : Controller
     {
         private readonly IUnitOfWork _IUnitOfWork;
@@ -118,7 +120,7 @@ namespace TenderProject.Areas.Admin.Controllers
             if (id != 0)
             {
               Supplier supplier = _IUnitOfWork.supplier.GetFirstOrDefault(s => s.Id == id
-              ,includeProperties: "Activity,SupplierDelegate,SupplierBranch.City.Government"
+              ,includeProperties: "Activity,SupplierDelegate,SupplierBranch.City,SupplierBranch.Government"
               );
             return View(supplier);
             }

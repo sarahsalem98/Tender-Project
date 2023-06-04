@@ -1,8 +1,8 @@
-﻿
-
-
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor httpContext;
 @{
     var currentRoute = Context.Request.HttpContext.Request.Path.Value;
+    
 }
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
@@ -19,16 +19,9 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="@(currentRoute=="/"?"active":"")  nav-item">
-                <a class="d-flex align-items-center" href="index.html"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span><span class="badge badge-light-warning rounded-pill ms-auto me-1">2</span></a>
-                <ul class="menu-content">
-                    <li>
-                        <a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
-                    </li>
-                    <li>
-                        <a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
-                    </li>
-                </ul>
+            <li class="@(currentRoute.Contains("home")?"active":"")  nav-item">
+                <a class="d-flex align-items-center" asp-action="index" asp-controller="home" asp-area="admin"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Main</span></a>
+               
             </li>
 
             <li class=" @(currentRoute.Contains("supplier")?"active":"") nav-item">
@@ -44,14 +37,23 @@
                 
                 </ul>*@
             </li>
-            <li class="@(currentRoute.Contains("employee")?"active":"") nav-item">
-                <a class="d-flex align-items-center" asp-action="index" asp-controller="employee" asp-area="admin"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Invoice">Employee</span></a>
+            @if (GeneralStaticBusiness.CheckPermitedPages("Index", "Employee", httpContext))
+            {
+                <li class="@(currentRoute.Contains("employee")?"active":"") nav-item">
+                    <a class="d-flex align-items-center" asp-action="index" asp-controller="employee" asp-area="admin"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Invoice">Employee</span></a>
 
 
             </li>
+            }
 
+           
 
-
+                
+                    <li class="@(currentRoute.Contains("role")?"active":"") nav-item">
+                        <a class="d-flex align-items-center" asp-action="index" asp-controller="role" asp-area="admin"><i data-feather="shield"></i><span class="menu-item text-truncate" data-i18n="Roles">Roles &amp; Permissions</span></a>
+                    </li>
+                  
+             
 
 
 

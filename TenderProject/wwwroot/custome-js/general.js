@@ -37,12 +37,12 @@
 
 
     },
-    callAjax: function (url, employeeVM, onSuccess, isPost = false) {
-        console.log(employeeVM);
+    callAjax: function (url, data, onSuccess, isPost = false) {
+        console.log(url);
         $.ajax({
             url: url,
             type: (isPost) ? ("POST") : ("GET"),
-            data: { employeeVM: employeeVM },
+            data:  data ,
             success: onSuccess,
             error: function (error) {
                 console.log(error);

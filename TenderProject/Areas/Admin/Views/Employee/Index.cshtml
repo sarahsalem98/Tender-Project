@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Index";
+   List<Role> roles = ViewBag.Roles;
 }
 
 <div class="app-content content ">
@@ -40,21 +41,33 @@
                             <div class="col-md-3 ">
 
                                 <label class="form-label">ID</label>
-                                <input type="text" class="form-control" id="employee-search-id" />
+                                <input type="text" class="form-control" id="employee-search-id" onkeyup="employee.intiTbl(isSearch=true);" />
 
 
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" class="form-control" id="employee-search-name" />
+                                <input type="text" class="form-control" id="employee-search-name" onkeyup="employee.intiTbl(isSearch=true);"  />
                             </div>
                             <div class="col-md-3 ">
                                 <label class="form-label">Email</label>
-                                <input type="text" class="form-control" id="employee-search-email" />
+                                <input type="email" class="form-control" id="employee-search-email" onkeyup="employee.intiTbl(isSearch=true);"  />
                             </div>
                             <div class="col-md-3 ">
                                 <label class="form-label">PhoneNumber</label>
-                                <input type="text" class="form-control" id="employee-search-phoneNumber" />
+                                <input type="text" class="form-control" id="employee-search-phoneNumber" onkeyup="employee.intiTbl(isSearch=true);" />
+                            </div>
+                            <div class="col-md-3 ">
+                                <label class="form-label">RoleId</label>
+                                <select class="form-select" id="employee-search-roleId" onchange="employee.intiTbl(isSearch=true);">
+                                    <option value="">----please select Role Id----</option>
+                                    @foreach (var role in roles)
+                                    {
+                                        <option value="@role.Id">@role.Name_En </option>
+
+                                    }
+
+                                </select>
                             </div>
 
                         </div>
@@ -113,7 +126,7 @@
 
 
     $(document).ready(function () {
-        console.log("looooog");
+        //console.log("looooog");
         employee.intiTbl();
     });
 </script>

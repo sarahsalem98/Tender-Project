@@ -9,6 +9,8 @@ namespace TenderProject.Repository.IRepository
         public IEmployeeRepo employee { get; }
         public IRoleRepo role { get; }
 
+        public IPermissionRepo permission { get; }
+
 
         public void save();
     }

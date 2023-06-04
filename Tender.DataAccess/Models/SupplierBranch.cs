@@ -8,6 +8,7 @@ using TenderProject.Models;
 
 namespace Tender.DataAccess.Models
 {
+   // [Table("SupplierBranchs")]
     public class SupplierBranch:TimeStamp
     {
         public int Id { get; set; }
