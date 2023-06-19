@@ -1,0 +1,175 @@
+﻿@using System.Security.Claims;
+@{
+    ViewData["Title"] = "Index";
+    List<(int, string)> tenderTypes = ViewBag.TenderTypes;
+    List<(int, string)> tenderStatuses = ViewBag.TenderStatuses;
+    string tenderStausJson = Newtonsoft.Json.JsonConvert.SerializeObject(tenderStatuses);
+
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0">Tender Table</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+
+                                <li class="breadcrumb-item active">
+                                    Tenders
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="content-body">
+
+            <!-- users list start -->
+            <section class="app-user-list">
+                <ul class="nav nav-pills mb-2" id="tender-filter-links">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="tender.intiTbl(isSearch=false,filter=1)">
+                            <i data-feather="globe" class="font-medium-3 me-50"></i>
+                            <span class="fw-bold">All Tenders</span>
+                        </a>
+                    </li>
+                  
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="tender.intiTbl(isSearch=false,filter=2)">
+                            <i data-feather="calendar" class="font-medium-3 me-50"></i>
+                            <span class="fw-bold">Current Tenders</span>
+                        </a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="tender.intiTbl(isSearch=false,filter=3)">
+                            <i data-feather="check" class="font-medium-3 me-50"></i>
+                            <span class="fw-bold">Finished Tenders</span>
+                        </a>
+                    </li>
+                  
+
+                </ul>
+                <!-- list and filter start -->
+                <div class="card">
+
+
+                    <div class="card-body border-bottom">
+                        <h4 class="card-title">Search & Filter</h4>
+                        
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <label class="form-label">TenderType</label>
+                                <select class="form-select" id="tender-search-type" onchange="tender.intiTbl(isSearch=true);">
+                                    <option value="">----please select Type----</option>
+                                    @foreach (var type in tenderTypes)
+                                    {
+                                        <option value="@type.Item1">@type.Item2</option>
+
+                                    }
+
+                                </select>
+                            </div>
+                            <div class="col-md-3 ">
+                                <label class="form-label">Tender Status</label>
+                                <select class="form-select" id="tender-search-status" onchange="tender.intiTbl(isSearch=true);">
+                                    <option value="">----please select Status----</option>
+                                    @foreach (var status in tenderStatuses)
+                                    {
+                                        <option value="@status.Item1">@status.Item2</option>
+
+                                    }
+
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" id="tender-search-name" onkeyup="tender.intiTbl(isSearch=true);" />
+                            </div>
+                            <div class="col-md-3 ">
+                                <label class="form-label">Approved By</label>
+                                <input type="email" class="form-control" id="tender-search-approvedBy" onkeyup="tender.intiTbl(isSearch=true);" />
+                            </div>
+                            <div class="col-md-3 ">
+                                <label class="form-label">Created By</label>
+                                <input type="text" class="form-control" id="tender-search-createdBy" onkeyup="tender.intiTbl(isSearch=true);" />
+                            </div>
+
+
+
+
+                        </div>
+
+                            <div  style="text-align:left;">
+
+                            <button type="button" onclick="tender.clearSearch();" class="btn btn-primary  fs-5"> clear search</button>
+                            </div>
+
+
+                    
+
+                    </div>
+
+                    <div class="card-datatable table-responsive pt-0">
+                        <div class="card-header ">
+                            <h4 class="card-title">All Tenders  </h4>
+                        </div>
+                        <table class="table" id="tenderTbl">
+
+                            <thead class="table-light">
+                                <tr>
+
+                                    <th>type</th>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                  
+                                    <th>Offer Recieving Date</th>
+                                    <th>Status</th>
+
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+
+                </div>
+                <!-- list and filter end -->
+            </section>
+            <!-- users list ends -->
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script src="~/custome-js/admin/tender.js"></script>
+    <script>
+
+            var tenderStatses=@Html.Raw(tenderStausJson);
+          //  console.log(tenderStatses);
+
+        $(document).ready(function () {
+            
+
+            tender.intiTbl();
+            $('#tender-filter-links .nav-link').on('click', function () {
+                $('#tender-filter-links .nav-link').removeClass('active'); 
+                $(this).addClass('active'); 
+            });
+        });
+    </script>
+}

@@ -1,7 +1,7 @@
 ﻿var general = {
 
-    intiDataTable: function (tableId, ajaxUrl, ajaxdata = {}, columns,buttons, pageSize) {
-        console.log("general");
+    intiDataTable: function (tableId, ajaxUrl, ajaxdata = {}, columns, columnsDefs, buttons, pageSize) {
+        console.log(ajaxdata);
         $(tableId).DataTable({
             searching: false,
             destroy: true,
@@ -17,6 +17,7 @@
                 //"datatype": "json"
             },
             columns: columns,
+            columnDefs: columnsDefs,
             pageLength: pageSize,
             dom:
                 '<"d-flex justify-content-between align-items-center header-actions mx-2 row mt-75"' +

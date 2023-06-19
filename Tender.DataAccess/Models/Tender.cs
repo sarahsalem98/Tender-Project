@@ -16,33 +16,35 @@ namespace Tender.DataAccess.Models
 
         public Activity Activity { get; set; }
         [ForeignKey("ActivityId")]
-        public int ActivityId { get; set; }
+        public int? ActivityId { get; set; }
 
         public City City { get; set; }
         [ForeignKey("CityId")]
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
 
 
         public Government Government { get; set; }
         [ForeignKey("GovernmentId")]
-        public int GovernmentId { get; set; }
+        public int? GovernmentId { get; set; }
         public TechnicalSide TechnicalSide { get; set; }
         [ForeignKey("TechnicalSideId")]
-        public int TechnicalSideId { get; set; }
+        public int? TechnicalSideId { get; set; }
 
         public OpeningEnvelopeCommittee OpeningEnvelopeCommittee { get; set; }
         [ForeignKey("OpeningEnvelopeCommitteeId")]
-        public int OpeningEnvelopeCommitteeId { get; set; }
+        public int? OpeningEnvelopeCommitteeId { get; set; }
         public OffersExaminationCommitte OffersExaminationCommitte { get; set; }
-        [ForeignKey("OffersExaminationCommitte")]
-        public int OffersExaminationCommitteId { get; set; }
+        [ForeignKey("OffersExaminationCommitteId")]
+        public int? OffersExaminationCommitteId { get; set; }
 
 
 
 
+      
         public int State { get; set; }
 
 
+    
         public int CategoryType { get; set; }
 
 
@@ -53,10 +55,10 @@ namespace Tender.DataAccess.Models
         public string Name { get; set; }
         public string? Description { get; set; }
 
-        public int TermsOfReferenceValue { get; set; }
+       //public int TermsOfReferenceValue { get; set; }
         public string ReferenceNumber { get; set; }
 
-        public int PrimaryInsuranceValue { get; set; }
+       // public int PrimaryInsuranceValue { get; set; }
         public string? PlaceOfOpeningEnvelops { get; set; }
         public string? SiteDetails { get; set; }
 
@@ -68,7 +70,7 @@ namespace Tender.DataAccess.Models
 
         public string? SumbittingOffersPlace { get; set; }
 
-        public int ExecutionPlace { get; set; }
+        public string? ExecutionPlace { get; set; }
         public string? ActivityDescription { get; set; }
 
         //Dates
@@ -103,6 +105,6 @@ namespace Tender.DataAccess.Models
 
         public string? ApprovedBy { get; set; }
 
-        public IList<TenderAttachment> TenderAttachments { get; set; }
+       // public IList<TenderAttachment> TenderAttachments { get; set; }
     }
 }

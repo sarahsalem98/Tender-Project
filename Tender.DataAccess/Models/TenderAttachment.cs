@@ -14,8 +14,8 @@ namespace Tender.DataAccess.Models
         public int TenderId { get; set; }   
 
         public AttachmentType AttachmentType { get; set; }
-        [ForeignKey("AttachmentId")]
-        public int AttachmentId { get; set; }
+        [ForeignKey("AttachmentTypeId")]
+        public int AttachmentTypeId { get; set; }
 
         public string FilePath { get; set; }    
     }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IKGazZLPCWkw0YYyqX2YbkJ1m1YjXzWvK1tO4MD3JU0=",
+  "Hash": "w0/F+Me07lulKqTuyuuYABEbZW7bvood7jZc9rcaDaU=",
   "Source": "TenderProject",
   "BasePath": "_content/TenderProject",
   "Mode": "Default",
@@ -117,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\custome-js\\admin\\supplier.js"
+    },
+    {
+      "Identity": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\custome-js\\admin\\tender.js",
+      "SourceId": "TenderProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\",
+      "BasePath": "_content/TenderProject",
+      "RelativePath": "custome-js/admin/tender.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\custome-js\\admin\\tender.js"
     },
     {
       "Identity": "E:\\projects\\TenderProject\\TenderProject\\wwwroot\\custome-js\\general.js",

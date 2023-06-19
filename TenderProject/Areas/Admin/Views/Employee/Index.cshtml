@@ -1,4 +1,6 @@
-﻿@{
+﻿@model PermittedVM
+
+@{
     ViewData["Title"] = "Index";
    List<Role> roles = ViewBag.Roles;
 }
@@ -124,10 +126,11 @@
 <script src="~/custome-js/admin/employee.js"></script>
 <script>
 
-
-    $(document).ready(function () {
-        //console.log("looooog");
-        employee.intiTbl();
-    });
+        var model = @Html.Raw(Json.Serialize(Model));
+        console.log(model);
+        $(document).ready(function () {
+            //console.log("looooog");
+            employee.intiTbl();
+        });
 </script>
 }

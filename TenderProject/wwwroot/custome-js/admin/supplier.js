@@ -113,9 +113,9 @@ var supplier = {
         //]
         //  }
 
+        var columnsDefs = [];
 
-
-        general.intiDataTable(tableId, url, data, columns, buttons, pageSize);
+        general.intiDataTable(tableId, url, data, columns, columnsDefs, buttons, pageSize);
     },
     activate: function (supplierId) {
 

@@ -37,9 +37,15 @@ namespace TenderProject.Areas.Admin.Controllers
         {
             if (GeneralStaticBusiness.CheckPermitedPages("Index", "Employee",_IhttpContextAccessor))
             {
-            ViewBag.Roles = _IUnitOfWork.role.GetAll();
+               ViewBag.Roles = _IUnitOfWork.role.GetAll();
+                PermittedVM model = new PermittedVM
+                {
+                    IsAdd= GeneralStaticBusiness.CheckPermitedPages("Add", "Employee", _IhttpContextAccessor),
+                    IsEdit= GeneralStaticBusiness.CheckPermitedPages("Edit", "Employee", _IhttpContextAccessor),
+                    IsDelete= GeneralStaticBusiness.CheckPermitedPages("Delete", "Employee", _IhttpContextAccessor)
+                };
           
-            return View();
+            return View(model);
 
             }
             return RedirectToAction("noPermission", "home", new { area = "admin" });

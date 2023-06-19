@@ -52,8 +52,13 @@
                     <li class="@(currentRoute.Contains("role")?"active":"") nav-item">
                         <a class="d-flex align-items-center" asp-action="index" asp-controller="role" asp-area="admin"><i data-feather="shield"></i><span class="menu-item text-truncate" data-i18n="Roles">Roles &amp; Permissions</span></a>
                     </li>
-                  
-             
+
+
+
+
+            <li class="@(currentRoute.Contains("tender")?"active":"") nav-item">
+                <a class="d-flex align-items-center" asp-action="index" asp-controller="tender" asp-area="admin"><i data-feather="shield"></i><span class="menu-item text-truncate" data-i18n="Roles">Tenders</span></a>
+            </li>
 
 
 

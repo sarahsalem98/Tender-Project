@@ -22,6 +22,64 @@ namespace Tender.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Tender.DataAccess.Models.AttachmentType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_Ar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_En")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AttachmentTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "كراسة الشروط ",
+                            Name_En = "refrence condition pdf",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "كراسة التاميين الابتدائى",
+                            Name_En = "intial insurance pdf",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "صور تابعه للمناقصة",
+                            Name_En = "tender pics",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
             modelBuilder.Entity("Tender.DataAccess.Models.City", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +147,237 @@ namespace Tender.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Governments");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.InvitedSupplier", b =>
+                {
+                    b.Property<int>("TenderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InvitationStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TenderId", "SupplierId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("InvitedSuppliers");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.Offer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ExpectedValue")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OfferStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TarsiaValue")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TechnicalEvaluation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TenderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Value")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SupplierId");
+
+                    b.HasIndex("TenderId");
+
+                    b.ToTable("Offers");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.OffersExaminationCommitte", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_Ar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_En")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OffersExaminationCommittes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "لجنه فحص العرووض الحكومية",
+                            Name_En = "public offer committe",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "لجنه فحص العرووض الخاصة",
+                            Name_En = "private offer committe",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "لجنه فحص العرووض للوزارة الكهربا",
+                            Name_En = "electical offer committe",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.OpeningEnvelopeCommittee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_Ar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_En")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OpeningEnvelopeCommittees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "لجنه فتح المظارييف الحكومية",
+                            Name_En = "public committe",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "لجنه فتح المظارييف الخاصة",
+                            Name_En = "private committe",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "لجنه فتح المظارييف للوزارة الكهربا",
+                            Name_En = "electical committe",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.PaymentType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_Ar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_En")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaymentTypes");
                 });
 
             modelBuilder.Entity("Tender.DataAccess.Models.Permission", b =>
@@ -212,6 +501,283 @@ namespace Tender.DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("SupplierDelegates");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.SupplierPayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Method")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TenderPaymentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SupplierId");
+
+                    b.HasIndex("TenderPaymentId");
+
+                    b.ToTable("SupplierPayments");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.SupplierTenderFavourite", b =>
+                {
+                    b.Property<int>("TenderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TenderId", "SupplierId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("SupplierTenderFavourites");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.TechnicalSide", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_Ar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name_En")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TechnicalSides");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "الجهه الفنية التابعه لوزارة الاتصالات",
+                            Name_En = "communication technical side",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "الجهه الفنية التابعه لوزارة الكهربا",
+                            Name_En = "electrical technical side",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name_Ar = "الجهه الفنية التابعه لوزارة الطاقه",
+                            Name_En = "power technical side",
+                            UpdatedAt = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.Tender", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ActivityDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ActivityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApprovedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CategoryType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CheckOffersDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExecutionPlace")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ExpectingResultsDate")
+                        .HasColumnType("Date");
+
+                    b.Property<int?>("GovernmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("InquiriesDeadline")
+                        .HasColumnType("Date");
+
+                    b.Property<string>("ManualReceivingAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OffersExaminationCommitteId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OpeningEnvelopeCommitteeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("OpeningEnvelposDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PlaceOfOpeningEnvelops")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PublishingDate")
+                        .HasColumnType("Date");
+
+                    b.Property<DateTime>("RecievingOffersDeadline")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReferenceNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SiteDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("State")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SumbittingOffersPlace")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TarsiaType")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TechnicalSideId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBY")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActivityId");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("GovernmentId");
+
+                    b.HasIndex("OffersExaminationCommitteId");
+
+                    b.HasIndex("OpeningEnvelopeCommitteeId");
+
+                    b.HasIndex("TechnicalSideId");
+
+                    b.ToTable("Tenders");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.TenderAttachment", b =>
+                {
+                    b.Property<int>("TenderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AttachmentTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TenderId", "AttachmentTypeId");
+
+                    b.HasIndex("AttachmentTypeId");
+
+                    b.ToTable("TenderAttachments");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.TenderPayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PaymentTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TenderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentTypeId");
+
+                    b.HasIndex("TenderId");
+
+                    b.ToTable("TenderPayments");
                 });
 
             modelBuilder.Entity("TenderProject.Models.Activity", b =>
@@ -408,10 +974,48 @@ namespace Tender.DataAccess.Migrations
                     b.Navigation("Government");
                 });
 
+            modelBuilder.Entity("Tender.DataAccess.Models.InvitedSupplier", b =>
+                {
+                    b.HasOne("TenderProject.Models.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tender.DataAccess.Models.Tender", "Tender")
+                        .WithMany()
+                        .HasForeignKey("TenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("Tender");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.Offer", b =>
+                {
+                    b.HasOne("TenderProject.Models.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tender.DataAccess.Models.Tender", "Tender")
+                        .WithMany()
+                        .HasForeignKey("TenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("Tender");
+                });
+
             modelBuilder.Entity("Tender.DataAccess.Models.Permission", b =>
                 {
                     b.HasOne("TenderProject.Models.Role", "Role")
-                        .WithMany()
+                        .WithMany("Permissions")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -457,6 +1061,119 @@ namespace Tender.DataAccess.Migrations
                     b.Navigation("Supplier");
                 });
 
+            modelBuilder.Entity("Tender.DataAccess.Models.SupplierPayment", b =>
+                {
+                    b.HasOne("TenderProject.Models.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tender.DataAccess.Models.TenderPayment", "TenderPayment")
+                        .WithMany()
+                        .HasForeignKey("TenderPaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("TenderPayment");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.SupplierTenderFavourite", b =>
+                {
+                    b.HasOne("TenderProject.Models.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tender.DataAccess.Models.Tender", "Tender")
+                        .WithMany()
+                        .HasForeignKey("TenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("Tender");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.Tender", b =>
+                {
+                    b.HasOne("TenderProject.Models.Activity", "Activity")
+                        .WithMany()
+                        .HasForeignKey("ActivityId");
+
+                    b.HasOne("Tender.DataAccess.Models.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId");
+
+                    b.HasOne("Tender.DataAccess.Models.Government", "Government")
+                        .WithMany()
+                        .HasForeignKey("GovernmentId");
+
+                    b.HasOne("Tender.DataAccess.Models.OffersExaminationCommitte", "OffersExaminationCommitte")
+                        .WithMany()
+                        .HasForeignKey("OffersExaminationCommitteId");
+
+                    b.HasOne("Tender.DataAccess.Models.OpeningEnvelopeCommittee", "OpeningEnvelopeCommittee")
+                        .WithMany()
+                        .HasForeignKey("OpeningEnvelopeCommitteeId");
+
+                    b.HasOne("Tender.DataAccess.Models.TechnicalSide", "TechnicalSide")
+                        .WithMany()
+                        .HasForeignKey("TechnicalSideId");
+
+                    b.Navigation("Activity");
+
+                    b.Navigation("City");
+
+                    b.Navigation("Government");
+
+                    b.Navigation("OffersExaminationCommitte");
+
+                    b.Navigation("OpeningEnvelopeCommittee");
+
+                    b.Navigation("TechnicalSide");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.TenderAttachment", b =>
+                {
+                    b.HasOne("Tender.DataAccess.Models.AttachmentType", "AttachmentType")
+                        .WithMany()
+                        .HasForeignKey("AttachmentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tender.DataAccess.Models.Tender", "Tender")
+                        .WithMany()
+                        .HasForeignKey("TenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AttachmentType");
+
+                    b.Navigation("Tender");
+                });
+
+            modelBuilder.Entity("Tender.DataAccess.Models.TenderPayment", b =>
+                {
+                    b.HasOne("Tender.DataAccess.Models.PaymentType", "PaymentType")
+                        .WithMany()
+                        .HasForeignKey("PaymentTypeId");
+
+                    b.HasOne("Tender.DataAccess.Models.Tender", "Tender")
+                        .WithMany()
+                        .HasForeignKey("TenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PaymentType");
+
+                    b.Navigation("Tender");
+                });
+
             modelBuilder.Entity("TenderProject.Models.Employee", b =>
                 {
                     b.HasOne("TenderProject.Models.Role", "Role")
@@ -480,6 +1197,8 @@ namespace Tender.DataAccess.Migrations
             modelBuilder.Entity("TenderProject.Models.Role", b =>
                 {
                     b.Navigation("Employees");
+
+                    b.Navigation("Permissions");
                 });
 
             modelBuilder.Entity("TenderProject.Models.Supplier", b =>

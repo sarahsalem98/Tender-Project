@@ -36,4 +36,6 @@ namespace TenderProject.Areas.Admin.Models
         [Required]
         public int RoleId { get; set; }
     }
+
+   
 }

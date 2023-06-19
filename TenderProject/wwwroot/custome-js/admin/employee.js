@@ -51,23 +51,21 @@
 
                   
 
-
-
+                    if (model.isEdit) {
                     var str = '<a href="javascript:void(0);" title="edit" onclick="employee.edit(`' + row.id + '`)" class="item-edit">' +
                         feather.icons['edit'].toSvg({ class: 'font-medium-4 me-50' }) +
                         '</a>'
 
+                    }
 
-
-
-
-
-                
+                    if (model.isDelete) {
 
                     str +=   '<a href="javascript:void(0);" title="delete" onclick="employee.delete(`' + row.id + '`)" class="item-edit">' +
                         feather.icons['x'].toSvg({ class: 'font-medium-4' }) +
                         '</a>' +
                         '</div>';
+
+                    }
                     return str;
 
                 }
@@ -79,10 +77,12 @@
         var tableId = "#employeeTbl";
         var pageSize = 15;
         var buttons =
+            model.isAdd? 
             [
 
-
+            
                 {
+                   
                     text: feather.icons['plus'].toSvg({ class: 'me-50 font-small-4' }) + 'Add New Employee',
                     className: 'create-new btn btn-primary',
                     //attr: {
@@ -98,10 +98,10 @@
                     }
                 }
 
-            ];
+            ]:[];
 
-
-        general.intiDataTable(tableId, url, data, columns, buttons, pageSize);
+        var columnsDefs = [];
+        general.intiDataTable(tableId, url, data, columns, columnsDefs, buttons, pageSize);
 
     },
     edit: function (employeeId) {
@@ -144,7 +144,7 @@
         general.callAjax("/admin/employee/AddEditEmployee", data, function (response) {
             if (response.status == 1) {
                 var msg = "";
-                console.log(isAdd);
+                
                 if (isAdd==true) {
                      msg = 'the class added successfully !! 😀';
                 } else {
