@@ -11426,34 +11426,33 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mrgne\\.nuget\\packages\\": {}
+    "/Users/sarahsalem/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\projects\\TenderProject\\TenderProject\\TenderProject.csproj",
+      "projectUniqueName": "/Users/sarahsalem/Projects/Tender-Project/TenderProject/TenderProject.csproj",
       "projectName": "TenderProject",
-      "projectPath": "E:\\projects\\TenderProject\\TenderProject\\TenderProject.csproj",
-      "packagesPath": "C:\\Users\\mrgne\\.nuget\\packages\\",
-      "outputPath": "E:\\projects\\TenderProject\\TenderProject\\obj\\",
+      "projectPath": "/Users/sarahsalem/Projects/Tender-Project/TenderProject/TenderProject.csproj",
+      "packagesPath": "/Users/sarahsalem/.nuget/packages/",
+      "outputPath": "/Users/sarahsalem/Projects/Tender-Project/TenderProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mrgne\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/sarahsalem/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "/usr/local/share/dotnet/sdk/7.0.304/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\projects\\TenderProject\\Tender.DataAccess\\Tender.DataAccess.csproj": {
-              "projectPath": "E:\\projects\\TenderProject\\Tender.DataAccess\\Tender.DataAccess.csproj"
+            "/Users/sarahsalem/Projects/Tender-Project/Tender.DataAccess/Tender.DataAccess.csproj": {
+              "projectPath": "/Users/sarahsalem/Projects/Tender-Project/Tender.DataAccess/Tender.DataAccess.csproj"
             }
           }
         }
@@ -11510,7 +11509,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.304/RuntimeIdentifierGraph.json"
       }
     }
   }

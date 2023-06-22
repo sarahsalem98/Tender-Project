@@ -126,7 +126,7 @@ namespace TenderProject.Areas.Admin.Controllers
                                     new Claim(ClaimTypes.Role,newEmployee.Role.Name_En),
                                       new Claim("RoleId",newEmployee.RoleId.ToString()),
                                     new Claim("RoleId",newEmployee.RoleId.ToString())
-                               }
+                               }, "Admin_Schema"
                                )), new AuthenticationProperties { IsPersistent = false });
 
                 _IhttpContextAccessor.HttpContext.Session.SetObjectAsJson("user_inf_session", _accountBusiness.SetUserInfInSessionForm(newEmployee));

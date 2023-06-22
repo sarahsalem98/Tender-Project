@@ -18,7 +18,7 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/vendors-rtl.min.css">
-       <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/extensions/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/extensions/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/forms/wizard/bs-stepper.min.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/forms/select/select2.min.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
@@ -28,6 +28,8 @@
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/tables/datatable/responsive.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/tables/datatable/buttons.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/pickers/pickadate/pickadate.css">
+    <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
     <!-- END: Vendor CSS-->
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/bootstrap.css">
@@ -42,18 +44,17 @@
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/forms/form-validation.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/forms/form-wizard.css">
+    <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/forms/pickers/form-flat-pickr.css">
+    <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/forms/pickers/form-pickadate.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/pages/app-ecommerce-details.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/extensions/ext-component-toastr.css">
-     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/plugins/extensions/ext-component-toastr.css">
     <!-- END: Page CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="~/Dashboard/app-assets/css-rtl/custom-rtl.css">
     <link rel="stylesheet" type="text/css" href="~/Dashboard/assets/css/style-rtl.css">
     <!-- END: Custom CSS-->
     <style>
-    
-
-          
     </style>
 
 </head>
@@ -63,26 +64,15 @@
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
 
     <!-- BEGIN: Header-->
-    <partial name="_Nav"/>
+    <partial name="_Nav" />
     <!-- END: Header-->
-
-
-
-
-
     <!-- BEGIN: Main Menu-->
-    <partial name="_Menu"/>
+    <partial name="_Menu" />
     <!-- END: Main Menu-->
-
-
-
-
     <!-- BEGIN: Content-->
-  
+
     @RenderBody();
     <!-- END: Content-->
-
-
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
         <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2022<a class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-end d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
@@ -111,7 +101,7 @@
     <script src="~/Dashboard/app-assets/vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>
     <!-- END: Page Vendor JS-->
     <!-- BEGIN: Theme JS-->
-     <script src="~/Dashboard/app-assets/vendors/js/extensions/toastr.min.js"></script>
+    <script src="~/Dashboard/app-assets/vendors/js/extensions/toastr.min.js"></script>
     <script src="~/Dashboard/app-assets/js/core/app-menu.js"></script>
     <script src="~/Dashboard/app-assets/js/core/app.js"></script>
     <script src="~/Dashboard/app-assets/js/scripts/customizer.js"></script>
@@ -119,23 +109,31 @@
     <!-- BEGIN: Page JS-->
     <script src="~/Dashboard/app-assets/js/scripts/pages/app-user-list.js"></script>
     <script src="~/Dashboard/app-assets/js/scripts/forms/form-wizard.js"></script>
-    <script src="~/custome-js/general.js" ></script>
-      <script src="~/Dashboard/app-assets/js/scripts/extensions/ext-component-toastr.js"></script>
+    <script src="~/custome-js/general.js"></script>
+    <script src="~/Dashboard/app-assets/js/scripts/extensions/ext-component-toastr.js"></script>
+
+    <script src="~/Dashboard/app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="~/Dashboard/app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+    <script src="~/Dashboard/app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+    <script src="~/Dashboard/app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
+    <script src="~/Dashboard/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+    <script src="~/Dashboard/app-assets/js/scripts/forms/pickers/form-pickers.js"></script>
+    <script src="~/Dashboard/app-assets/js/scripts/forms/form-validation.js"></script>
+
+
     <!-- END: Page JS-->
 
     @await RenderSectionAsync("Scripts", required: false)
 
 
-    <script>
-        $(window).on('load', function() {
+    <script>$(window).on('load', function () {
             if (feather) {
                 feather.replace({
                     width: 14,
                     height: 14
                 });
             }
-        })
-    </script>
+        })</script>
 </body>
 <!-- END: Body-->
 

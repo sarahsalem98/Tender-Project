@@ -23,14 +23,14 @@
             { data: "id" },
             { data: "name" },
             { data: "recievingOffersDeadline" },
-        
+
             {
                 "render": function (data, type, row) {
                     var str = "";
                     var content = "";
                     var className = "";
-                  
-                    if (row.state == tenderStatses[0].Item1 && row.state == 1) {  className = "secondary"; content = tenderStatses[0].Item2 }
+
+                    if (row.state == tenderStatses[0].Item1 && row.state == 1) { className = "secondary"; content = tenderStatses[0].Item2 }
                     if (row.state == tenderStatses[1].Item1 && row.state == 2) { className = "secondary"; content = tenderStatses[1].Item2 }
                     if (row.state == tenderStatses[2].Item1 && row.state == 3) { className = "info"; content = tenderStatses[2].Item2 }
                     if (row.state == tenderStatses[3].Item1 && row.state == 4) { className = "primary"; content = tenderStatses[3].Item2 }
@@ -38,17 +38,17 @@
                     if (row.state == tenderStatses[5].Item1 && row.state == 6) { className = "success"; content = tenderStatses[5].Item2 }
                     if (row.state == tenderStatses[6].Item1 && row.state == 7) { className = "dark"; content = tenderStatses[6].Item2 }
                     if (row.state == tenderStatses[7].Item1 && row.state == 8) { className = "danger"; content = tenderStatses[7].Item2 }
-                   
-                  
-                    
-        
+
+
+
+
 
                     return ` <span class='badge rounded-pill  badge-light-${className}'>${content} </span>`;
 
                 }
             }
-            
-            
+
+
 
 
         ];
@@ -56,7 +56,7 @@
             "render": function (data, type, row) {
 
                 var str = '<div class="d-inline-flex">';
-       
+
                 if (row.state == 1) {
                     str +=
                         '<a href="javascript:void(0);" title="sent to approve" onclick="supplier.details(`' + row.id + '`)" class="item-edit me-50">' +
@@ -73,7 +73,7 @@
                         '</a>';
 
 
-                } 
+                }
 
                 //state=>2
                 if (row.state == 2) {
@@ -92,10 +92,10 @@
                             '</a>';
 
                     } else {
-                  
+
                         str += '<a href="javascript:void(0);"  title="publish"  onclick="supplier.details(`' + row.id + '`)" class="item-edit me-50">' +
-                        feather.icons['send'].toSvg({ class: 'font-medium-4 fs-5 me-50' }) +
-                        '</a>';
+                            feather.icons['send'].toSvg({ class: 'font-medium-4 fs-5 me-50' }) +
+                            '</a>';
                     }
                 }
 
@@ -107,7 +107,7 @@
                         '</a>' +
 
                         '</div>';
-                } 
+                }
 
                 //state=>4
 
@@ -155,12 +155,12 @@
 
                         '</div>';
                 }
-               
 
 
-              
-               
-        
+
+
+
+
 
                 return str;
 
@@ -192,7 +192,7 @@
 
             ];
 
-       var columnsDefs = [{
+        var columnsDefs = [{
             "targets": [0],
             "visible": false,
             "searchable": false
@@ -201,11 +201,68 @@
         general.intiDataTable(tableId, url, data, columns, columnsDefs, buttons, pageSize);
     },
     clearSearch: function () {
-   
+
         document.getElementById("tender-search-type").value = "";
-        document.getElementById("tender-search-status").value="";
+        document.getElementById("tender-search-status").value = "";
         document.getElementById("tender-search-name").value = "";
         document.getElementById("tender-search-createdBy").value = "";
         document.getElementById("tender-search-approvedBy").value = "";
+    },
+    // Function to handle file upload
+
+    handleFileUpload: function () {
+        const fileInput = document.getElementById('file-input');
+        const attachmentNameInput = document.getElementById('attachment-name');
+
+        const file = fileInput.files[0];
+        const attachmentName = attachmentNameInput.value;
+
+        if (file && attachmentName) {
+            // Perform file upload logic here (e.g., using AJAX, FormData, or other methods)
+            // Once the file is uploaded successfully, add the attachment to the attachments container
+
+            const attachmentsContainer = document.getElementById('attachments-container');
+
+            // Create attachment element
+            const attachmentElement = document.createElement('div');
+            attachmentElement.className = 'attachment input-group mb-3';
+
+            // Display attachment name as a clickable link
+            const attachmentLink = document.createElement('a');
+            attachmentLink.className = 'form-control';
+            attachmentLink.textContent = attachmentName;
+            attachmentLink.href = URL.createObjectURL(file);
+            attachmentLink.target = '_blank';
+
+            // Append attachment link to attachment element
+            attachmentElement.appendChild(attachmentLink);
+
+            // Create delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'btn btn-danger';
+            deleteButton.textContent = 'Delete';
+
+            // Attach event listener to delete button
+            deleteButton.addEventListener('click', () => {
+                // Handle delete logic here (e.g., remove the attachment element from the DOM)
+                attachmentElement.remove();
+            });
+
+            // Append delete button to attachment element
+            attachmentElement.appendChild(deleteButton);
+
+            // Append attachment element to attachments container
+            attachmentsContainer.appendChild(attachmentElement);
+
+            // Clear file input and attachment name input
+            fileInput.value = '';
+            attachmentNameInput.value = '';
+        }
     }
-    }
+}
+
+
+
+
+
+

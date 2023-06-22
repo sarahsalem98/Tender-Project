@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\projects\\TenderProject\\Tender.DataAccess\\Tender.DataAccess.csproj": {}
+    "/Users/sarahsalem/Projects/Tender-Project/Tender.DataAccess/Tender.DataAccess.csproj": {}
   },
   "projects": {
-    "E:\\projects\\TenderProject\\Tender.DataAccess\\Tender.DataAccess.csproj": {
+    "/Users/sarahsalem/Projects/Tender-Project/Tender.DataAccess/Tender.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\projects\\TenderProject\\Tender.DataAccess\\Tender.DataAccess.csproj",
+        "projectUniqueName": "/Users/sarahsalem/Projects/Tender-Project/Tender.DataAccess/Tender.DataAccess.csproj",
         "projectName": "Tender.DataAccess",
-        "projectPath": "E:\\projects\\TenderProject\\Tender.DataAccess\\Tender.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\mrgne\\.nuget\\packages\\",
-        "outputPath": "E:\\projects\\TenderProject\\Tender.DataAccess\\obj\\",
+        "projectPath": "/Users/sarahsalem/Projects/Tender-Project/Tender.DataAccess/Tender.DataAccess.csproj",
+        "packagesPath": "/Users/sarahsalem/.nuget/packages/",
+        "outputPath": "/Users/sarahsalem/Projects/Tender-Project/Tender.DataAccess/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mrgne\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/sarahsalem/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,6 +41,12 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
@@ -69,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.304/RuntimeIdentifierGraph.json"
         }
       }
     }
